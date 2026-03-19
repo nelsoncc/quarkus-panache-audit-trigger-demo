@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <style>
+      .bg { fill: #0b1020; }
+      .card { fill: #121933; stroke: #34406a; stroke-width: 2; rx: 18; ry: 18; }
+      .title { fill: #f5f7ff; font: 700 28px Arial, sans-serif; }
+      .subtitle { fill: #c9d3ff; font: 400 18px Arial, sans-serif; }
+      .label { fill: #ecf1ff; font: 700 20px Arial, sans-serif; }
+      .text { fill: #d8e0ff; font: 400 17px Arial, sans-serif; }
+      .small { fill: #9fb0e8; font: 400 15px Arial, sans-serif; }
+      .line { stroke: #7dd3fc; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .line2 { stroke: #86efac; stroke-width: 4; fill: none; marker-end: url(#arrow2); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7dd3fc"/>
+    </marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#86efac"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="720"/>
+  <text x="60" y="70" class="title">Quarkus + Panache Transparent Audit</text>
+  <text x="60" y="105" class="subtitle">Database-owned audit columns that still work for Panache.update(...)</text>
+
+  <rect class="card" x="60" y="170" width="230" height="120"/>
+  <text x="90" y="220" class="label">HTTP Client</text>
+  <text x="90" y="255" class="text">POST /products</text>
+  <text x="90" y="283" class="small">X-Audit-User: alice</text>
+
+  <rect class="card" x="350" y="150" width="250" height="160"/>
+  <text x="385" y="200" class="label">Request Filter</text>
+  <text x="385" y="235" class="text">Resolve current user</text>
+  <text x="385" y="263" class="text">from SecurityIdentity</text>
+  <text x="385" y="291" class="text">or X-Audit-User</text>
+
+  <rect class="card" x="660" y="150" width="260" height="160"/>
+  <text x="690" y="200" class="label">Transaction Listener</text>
+  <text x="690" y="235" class="text">@Initialized(TransactionScoped)</text>
+  <text x="690" y="263" class="text">session.doWork(...)</text>
+  <text x="690" y="291" class="small">set_config('app.user', user, true)</text>
+
+  <rect class="card" x="960" y="140" width="180" height="180"/>
+  <text x="1002" y="200" class="label">PostgreSQL</text>
+  <text x="987" y="235" class="text">INSERT / UPDATE</text>
+  <text x="987" y="265" class="small">managed entity</text>
+  <text x="987" y="290" class="small">Panache.update(...)</text>
+  <text x="987" y="315" class="small">native SQL</text>
+
+  <rect class="card" x="810" y="420" width="330" height="180"/>
+  <text x="845" y="470" class="label">Audit Trigger</text>
+  <text x="845" y="505" class="text">BEFORE INSERT OR UPDATE</text>
+  <text x="845" y="535" class="text">created_* on insert</text>
+  <text x="845" y="565" class="text">updated_* on every update</text>
+
+  <rect class="card" x="70" y="430" width="640" height="180"/>
+  <text x="105" y="480" class="label">Outcome</text>
+  <text x="105" y="515" class="text">Audit is consistent across all write paths.</text>
+  <text x="105" y="545" class="text">Developers do not need to remember to patch each update query.</text>
+  <text x="105" y="575" class="text">The database becomes the single source of truth for audit columns.</text>
+
+  <path class="line" d="M290 230 C320 230, 325 230, 350 230"/>
+  <path class="line" d="M600 230 C625 230, 635 230, 660 230"/>
+  <path class="line" d="M920 230 C940 230, 945 230, 960 230"/>
+  <path class="line2" d="M1050 320 C1050 360, 1030 385, 1000 420"/>
+  <path class="line2" d="M810 510 C770 510, 750 510, 710 510"/>
+</svg>
